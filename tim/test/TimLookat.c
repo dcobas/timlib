@@ -123,15 +123,16 @@ static char tbuf[SZE];
 
 char tmp[SZE];
 char *yr, *ti, *md, *mn, *dy;
+time_t second = t->Second;
 
    bzero((void *) tbuf, SZE);
    bzero((void *) tmp, SZE);
 
    if (t->Second) {
 #ifdef __68k__
-      ctime_r(&t->Second, tmp, 128);
+      ctime_r(&second, tmp, 128);
 #else
-      ctime_r(&t->Second, tmp);
+      ctime_r(&second, tmp);
 #endif
       tmp[3] = 0;
       dy = &(tmp[0]);

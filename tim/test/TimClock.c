@@ -47,10 +47,11 @@ char *yr, *ti, *md, *mn, *dy;
    bzero((void *) tmp, 128);
 
    if (t->Second) {
+      time_t second = t->Second;
 #ifdef __68k__
-      ctime_r(&t->Second, tmp, 128);
+      ctime_r(&second, tmp, 128);
 #else
-      ctime_r(&t->Second, tmp);
+      ctime_r(&second, tmp);
 #endif
       tmp[3] = 0;
       dy = &(tmp[0]);
